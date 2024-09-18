@@ -1,0 +1,11 @@
+{
+    "version": 4,
+    "vendor": {
+        "conan": {}
+    },
+    "include": [
+        "/mnt/c/Users/czarneckim/repositories/grayscale/build/Release/generators/CMakePresets.json",
+        "build/Release/generators/CMakePresets.json",
+        "build/gcc-11-x86_64-gnu23-release-static/generators/CMakePresets.json"
+    ]
+}

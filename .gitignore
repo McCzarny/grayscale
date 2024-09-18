@@ -1,0 +1,59 @@
+
+# C++ build artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+# Conan specific
+conan.lock
+conanbuildinfo.*
+conaninfo.txt
+graph_info.json
+
+# Build directories
+build/
+bin/
+lib/
+out/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# IDE specific files
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# Compiler generated files
+*.pch
+*.idb
+*.pdb
+
+# Temporary files
+*.log
+*.tlog
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Conan package directories
+test_package/build/
+test_package/CMakeUserPresets.json
+
+# Dependency directories
+conan_packages/
+
+# CTest Temp
+Testing/Temporary
