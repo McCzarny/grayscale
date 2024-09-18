@@ -1,0 +1,67 @@
+name: Conan
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Get GCC-11
+      run:   |
+             sudo apt update
+             sudo apt install gcc-11 g++-11
+      shell: bash
+
+    - name: Conan installation
+      id: conan
+      uses: turtlebrowser/get-conan@main
+      with:
+        version: 2.7.1
+
+    - name: Install dependencies
+      run: |
+           sudo apt-get install -y libva-dev libvdpau-dev \
+           libx11-dev libx11-xcb-dev libfontenc-dev libice-dev \
+           libsm-dev libxau-dev libxaw7-dev libxcomposite-dev \
+           libxcursor-dev libxdamage-dev libxfixes-dev libxi-dev \
+           libxinerama-dev libxmuu-dev libxrandr-dev libxres-dev \
+           libxss-dev libxtst-dev libxv-dev libxxf86vm-dev \
+           libxcb-glx0-dev libxcb-render-util0-dev libxcb-xkb-dev \
+           libxcb-icccm4-dev libxcb-image0-dev libxcb-keysyms1-dev \
+           libxcb-randr0-dev libxcb-shape0-dev libxcb-sync-dev \
+           libxcb-xfixes0-dev libxcb-xinerama0-dev libxcb-dri3-dev \
+           libxcb-cursor-dev libxcb-dri2-0-dev libxcb-dri3-dev \
+           libxcb-present-dev libxcb-composite0-dev libxcb-ewmh-dev \
+           libxcb-res0-dev libxcb-util-dev
+      shell: bash
+
+    - name: Conan version
+      run: echo "${{ steps.conan.outputs.version }}"
+
+    - name: Detect conan profile
+      run: conan profile detect
+
+    - name: Conan install dependencies
+      run:  |
+            conan install . \
+            -s build_type=${{env.BUILD_TYPE}} \
+            -b=missing
+
+    - name: Conan build
+      run: |
+           conan build . \
+           -s build_type=${{env.BUILD_TYPE}}
+
+    - name: Cmake test
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C ${{env.BUILD_TYPE}}

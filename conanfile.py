@@ -59,4 +59,4 @@ class grayscaleRecipe(ConanFile):
         self.requires("gtest/1.15.0")
 
     def validate(self):
-        check_min_cppstd(self, "23")
+        check_min_cppstd(self, "17")

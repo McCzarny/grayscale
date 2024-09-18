@@ -3,7 +3,7 @@ project(UnitTests CXX)
 
 include(CTest)
 
-find_package(gtest REQUIRED)
+find_package(GTest REQUIRED)
 
 INCLUDE_DIRECTORIES( ${OpenCV_INCLUDE_DIRS} )
 
