@@ -1,4 +1,4 @@
-name: Conan
+name: CI
 
 on:
   push:
