@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Grayscale Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-wrapper {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .arrow {
+            font-size: 24px;
+            margin: 0 10px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Grayscale Comparison</h1>
+    <div class="image-container">
+        <div class="image-wrapper">
+            <h2>Source Image</h2>
+            <img src="color.png" alt="Source Image">
+        </div>
+        <div class="arrow">
+            ➡️ grayscale ➡️
+        </div>
+        <div class="image-wrapper">
+            <h2>Grayscale Image</h2>
+            <img src="gray.png" alt="Grayscale Image">
+        </div>
+    </div>
+</body>
+</html>
